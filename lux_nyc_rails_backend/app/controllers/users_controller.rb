@@ -5,13 +5,18 @@ class UsersController < ApplicationController
     render json: users, status: 200
   end
 
-  def show
-    user = find_user
-    render json: user, status: 200
+  def auth
+    user = User.find_by(id: session[:user_id])
+    if user
+      render json: user, status: 200
+    else
+      render json: {error: "Not authorized"}, status: 401
+    end
   end
 
-  def create
+  def signup
     user = User.create!(user_params)
+    session[:user_id] = user.id
     render json: user, status: 201
   end
 
@@ -34,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:fullname, :username, :email)
+    params.permit(:username, :email, :password)
   end
 
 end

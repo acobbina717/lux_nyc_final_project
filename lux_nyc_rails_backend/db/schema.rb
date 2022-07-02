@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_152053) do
     t.string "amenities", default: [], array: true
     t.integer "rooms_available"
     t.float "rating"
-    t.string "images", default: [], array: true
+    t.string "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,14 +79,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_152053) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "fullname"
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.string "gender"
-    t.integer "datetime"
     t.integer "phone_number"
-    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
