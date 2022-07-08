@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def auth
     user = User.find_by(id: session[:user_id])
+    # byebug
     if user
       render json: user, status: 200
     else

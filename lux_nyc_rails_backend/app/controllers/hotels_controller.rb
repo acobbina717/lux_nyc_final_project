@@ -2,6 +2,7 @@ class HotelsController < ApplicationController
 
   def index
     hotels = Hotel.all
+    byebug
     render json: hotels, status: 200
   end
 
